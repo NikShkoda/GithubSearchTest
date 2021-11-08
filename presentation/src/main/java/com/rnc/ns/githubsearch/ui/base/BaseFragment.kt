@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 abstract class BaseFragment< out VB : ViewBinding> : Fragment() {
     private var _binding: VB? = null
     protected val binding
-        get() = _binding!!
+        get() = requireNotNull(_binding)
     protected abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
 
     protected lateinit var navController: NavController

@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.let {
-            it.setDisplayHomeAsUpEnabled(true)
-            val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.navHostFragment) as NavHostFragment
-            _navController = navHostFragment.navController
-            val appBarConfiguration = AppBarConfiguration.Builder(_navController.graph).build()
-            NavigationUI.setupActionBarWithNavController(this, _navController, appBarConfiguration)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        _navController =
+            (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment)
+                .navController.also {
+                    NavigationUI.setupActionBarWithNavController(
+                        this, it, AppBarConfiguration.Builder(it.graph).build()
+                    )
+                }
     }
 
     override fun onSupportNavigateUp(): Boolean {
