@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GithubSearch</string>
+    <string name="error">Error: %s</string>
+    <string name="unknown_error">UnknownError</string>
+    <string name="format_repository_name">Repository Name: %s</string>
+    <string name="repository_rating">Repository Rating:</string>
+    <string name="format_description">Description: %s</string>
+    <string name="format_repository_url">Repository URL: %s</string>
+    <string name="repository_details">Repository Details</string>
+    <string name="format_stars">Stars: %d</string>
+    <string name="hint_enter_repository_name">Enter Repository name</string>
+    <string name="empty_search">Repository name can\'t be empty</string>
+    <string name="search_repositories">Search Repositories</string>
+    <string name="format_watchers">Watchers: %d</string>
+    <string name="no_data_yet">There is no data currently available</string>
+</resources>

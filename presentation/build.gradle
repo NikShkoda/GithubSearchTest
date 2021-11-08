@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+apply from: '../commons.gradle'
+
+android {
+    defaultConfig {
+        applicationId ApplicationId.id
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(Modules.domain)
+    implementation project(Modules.data)
+
+    // CORE
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.material
+
+    //PAGING
+    implementation AndroidLibraries.paging
+
+    // LIFECYCLE
+    implementation AndroidLibraries.lifecycle
+
+    // NAVIGATION
+    implementation AndroidLibraries.navigationFragment
+    implementation AndroidLibraries.navigationUI
+
+    // IMAGE LOAD
+    implementation AndroidLibraries.glide
+}

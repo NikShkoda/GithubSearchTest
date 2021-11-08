@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply from: '../commons.gradle'
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_GITHUB_URL", "$baseGithubUrl"
+        }
+        release {
+            initWith debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(Modules.domain)
+
+    // NETWORK
+    implementation Libraries.okHttp
+    implementation Libraries.okHttpLogging
+    implementation Libraries.retrofit
+}
