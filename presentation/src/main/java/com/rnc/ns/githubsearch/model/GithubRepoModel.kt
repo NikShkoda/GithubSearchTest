@@ -14,4 +14,4 @@ data class GithubRepoModel(
     val watchers: Int,
     val score: Int,
     val ownerModel: OwnerModel
-): IdEntity<Long>, Parcelable
+): IdModel<Long>, Parcelable
