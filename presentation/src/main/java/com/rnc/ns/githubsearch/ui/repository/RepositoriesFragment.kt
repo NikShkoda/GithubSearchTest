@@ -16,7 +16,7 @@ import com.rnc.ns.githubsearch.extension.hide
 import com.rnc.ns.githubsearch.extension.hideKeyboard
 import com.rnc.ns.githubsearch.extension.show
 import com.rnc.ns.githubsearch.extension.string
-import com.rnc.ns.githubsearch.model.GithubRepoModel
+import com.rnc.ns.githubsearch.model.GithubRepoViewItem
 import com.rnc.ns.githubsearch.ui.adapter.RepositoryAdapter
 import com.rnc.ns.githubsearch.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -99,7 +99,7 @@ class RepositoriesFragment : BaseFragment<FragmentRepositoriesBinding>() {
         }
     }
 
-    private fun showDetails(repository: GithubRepoModel) {
+    private fun showDetails(repository: GithubRepoViewItem) {
         navController.navigate(R.id.action_Repositories_to_RepositoryDetails, Bundle().apply {
             putParcelable(RepositoryDetailsFragment.EXTRA_REPOSITORY, repository)
         })

@@ -6,9 +6,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.rnc.ns.domain.model.base.IdEntity
+import com.rnc.ns.domain.model.base.ModelItem
+import com.rnc.ns.githubsearch.model.base.ViewItem
 
-abstract class BasePagingDataAdapter<ID, T : IdEntity<ID>, VB : ViewBinding> :
+abstract class BasePagingDataAdapter<ID, T : ViewItem<ID>, VB : ViewBinding> :
     PagingDataAdapter<T, BasePagingDataAdapter<ID, T, VB>.BaseViewHolder>(object :
         DiffUtil.ItemCallback<T>() {
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean = oldItem.id == newItem.id

@@ -7,13 +7,13 @@ import com.rnc.ns.domain.model.remote.Result
 import com.rnc.ns.domain.usecase.GetGithubReposUseCase
 import com.rnc.ns.githubsearch.manager.ScoreManager
 import com.rnc.ns.githubsearch.mapper.toGithubRepoModel
-import com.rnc.ns.githubsearch.model.GithubRepoModel
+import com.rnc.ns.githubsearch.model.GithubRepoViewItem
 
 class GithubRepoPagingSource(
     private val repositoriesUseCase: GetGithubReposUseCase,
     private val query: String
-) : PagingSource<Int, GithubRepoModel>() {
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GithubRepoModel> {
+) : PagingSource<Int, GithubRepoViewItem>() {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GithubRepoViewItem> {
         val pageNumber = params.key ?: 1
         val perPage = params.loadSize
         val response = repositoriesUseCase(
@@ -27,14 +27,14 @@ class GithubRepoPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, GithubRepoModel>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, GithubRepoViewItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    private fun getResultFromSuccess(pageNumber: Int, data: GithubReposResponse?): LoadResult<Int, GithubRepoModel> {
+    private fun getResultFromSuccess(pageNumber: Int, data: GithubReposResponse?): LoadResult<Int, GithubRepoViewItem> {
         return data?.let { response ->
             if (response.totalCount == 0) {
                 LoadResult.Error(Throwable("No results"))

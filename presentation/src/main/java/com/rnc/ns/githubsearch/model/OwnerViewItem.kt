@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class OwnerModel(
+data class OwnerViewItem(
     val login: String,
     val avatarUrl: String
 ) : Parcelable

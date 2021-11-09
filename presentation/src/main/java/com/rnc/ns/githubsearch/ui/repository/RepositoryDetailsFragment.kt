@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.rnc.ns.githubsearch.R
 import com.rnc.ns.githubsearch.databinding.FragmentRepositoryDetailsBinding
-import com.rnc.ns.githubsearch.model.GithubRepoModel
+import com.rnc.ns.githubsearch.extension.toRating
+import com.rnc.ns.githubsearch.model.GithubRepoViewItem
 import com.rnc.ns.githubsearch.ui.base.BaseFragment
 
 class RepositoryDetailsFragment : BaseFragment<FragmentRepositoryDetailsBinding>() {
@@ -21,7 +22,7 @@ class RepositoryDetailsFragment : BaseFragment<FragmentRepositoryDetailsBinding>
         }
 
     private val _repo by lazy {
-        arguments?.getParcelable(EXTRA_REPOSITORY) as GithubRepoModel?
+        arguments?.getParcelable(EXTRA_REPOSITORY) as GithubRepoViewItem?
             ?: throw IllegalStateException("Repository can't be null")
     }
 
@@ -30,8 +31,8 @@ class RepositoryDetailsFragment : BaseFragment<FragmentRepositoryDetailsBinding>
 
         with(_repo) {
             binding.tvRepositoryName.text = getString(R.string.format_repository_name, name)
-            Glide.with(requireContext()).load(ownerModel.avatarUrl).circleCrop().into(binding.ivOwnerAvatar)
-            binding.rbRepositoryStars.rating = score().toRating()
+            Glide.with(requireContext()).load(ownerViewItem.avatarUrl).circleCrop().into(binding.ivOwnerAvatar)
+            binding.rbRepositoryStars.rating = score.toRating()
             binding.tvDescription.text = getString(R.string.format_description, description)
             binding.tvRepositoryUrl.text = getString(R.string.format_repository_url, url)
             binding.tvRepositoryStars.text = getString(R.string.format_stars, stars)

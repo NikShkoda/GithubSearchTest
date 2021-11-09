@@ -1,12 +1,12 @@
 package com.rnc.ns.githubsearch.mapper
 
-import com.rnc.ns.domain.model.github.GithubRepo
-import com.rnc.ns.domain.model.github.Owner
-import com.rnc.ns.githubsearch.model.GithubRepoModel
-import com.rnc.ns.githubsearch.model.OwnerModel
+import com.rnc.ns.domain.model.github.GithubRepoModelItem
+import com.rnc.ns.domain.model.github.OwnerModelItem
+import com.rnc.ns.githubsearch.model.GithubRepoViewItem
+import com.rnc.ns.githubsearch.model.OwnerViewItem
 
-fun GithubRepo.toGithubRepoModel(): GithubRepoModel =
-    GithubRepoModel(id, name, description, url, stars, watchers, stars + watchers, owner.toOwner())
+fun GithubRepoModelItem.toGithubRepoModel(): GithubRepoViewItem =
+    GithubRepoViewItem(id, name, description, url, stars, watchers, stars + watchers, ownerModelItem.toOwner())
 
-private fun Owner.toOwner(): OwnerModel =
-    OwnerModel(login, avatarUrl)
+private fun OwnerModelItem.toOwner(): OwnerViewItem =
+    OwnerViewItem(login, avatarUrl)

@@ -3,7 +3,7 @@ package com.rnc.ns.githubsearch.manager
 import kotlin.properties.Delegates
 
 /**
- * Simple class to get rating for [com.rnc.ns.domain.model.github.GithubRepo]
+ * Simple class to get rating for [com.rnc.ns.domain.model.github.GithubRepoModelItem]
  */
 object ScoreManager {
     private const val MAX_RATING = 5.0F
@@ -22,18 +22,18 @@ object ScoreManager {
     }
 
     /**
-     * Resets [maxScore] for the new query of [com.rnc.ns.domain.model.github.GithubRepo]
+     * Resets [maxScore] for the new query of [com.rnc.ns.domain.model.github.GithubRepoModelItem]
      */
     fun resetMaxScore() {
         maxScore = 0
     }
 
     /**
-     * Calculates rating of the [com.rnc.ns.domain.model.github.GithubRepo] avoiding
+     * Calculates rating of the [com.rnc.ns.domain.model.github.GithubRepoModelItem] avoiding
      * any potentials overflows or incorrect values for [android.widget.RatingBar]
      *
-     * @param score - score of the [com.rnc.ns.domain.model.github.GithubRepo]
-     * @return rating of the [com.rnc.ns.domain.model.github.GithubRepo]
+     * @param score - score of the [com.rnc.ns.domain.model.github.GithubRepoModelItem]
+     * @return rating of the [com.rnc.ns.domain.model.github.GithubRepoModelItem]
      */
     fun getRating(score: Int): Float {
         return if(maxScore == 0) {

@@ -1,6 +1,6 @@
 package com.rnc.ns.domain.model.base
 
-interface IdEntity<T> {
+interface ModelItem<T> {
     val id: T
     override fun equals(other: Any?): Boolean
 }
